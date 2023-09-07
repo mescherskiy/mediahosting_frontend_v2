@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mediahosting_frontend_v2/static/css/main.f2a4512c.css",
+    "main.js": "/mediahosting_frontend_v2/static/js/main.477edaa8.js",
+    "index.html": "/mediahosting_frontend_v2/index.html",
+    "main.f2a4512c.css.map": "/mediahosting_frontend_v2/static/css/main.f2a4512c.css.map",
+    "main.477edaa8.js.map": "/mediahosting_frontend_v2/static/js/main.477edaa8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2a4512c.css",
+    "static/js/main.477edaa8.js"
+  ]
+}
