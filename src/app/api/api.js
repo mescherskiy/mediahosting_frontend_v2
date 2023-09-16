@@ -4,7 +4,8 @@ import { logOut } from "../slices/authSlice";
 
 const baseQuery = fetchBaseQuery({
     // baseUrl: "http://localhost:8080/api",
-    baseUrl: "https://media-hosting-beedbd9a2f9f.herokuapp.com/api",
+    // baseUrl: "https://media-hosting-beedbd9a2f9f.herokuapp.com/api",
+    baseUrl: "/api",
     credentials: "include",
 })
 
