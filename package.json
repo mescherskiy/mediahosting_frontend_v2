@@ -1,5 +1,6 @@
 {
   "homepage": "http://mescherskiy.github.io",
+  "proxy": "http://localhost:3000",
   "name": "mediahosting_frontend",
   "version": "0.1.0",
   "private": true,
