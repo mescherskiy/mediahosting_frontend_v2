@@ -1,17 +1,22 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const httpProxy = require('http-proxy');
 const port = process.env.PORT || 3000;
+
+const proxy = httpProxy.createProxyServer();
+
 app.use(express.json());
-// Your static pre-build assets folder
 app.use(express.static(path.join(__dirname, '..', 'build')));
-// Root Redirects to the pre-build assets
-app.get('/', function(req,res){
-  res.sendFile(path.join(__dirname, '..', 'build'));
+app.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
-// Any Page Redirects to the pre-build assets folder index.html that // will load the react app
-app.get('*', function(req,res){
-  res.sendFile(path.join(__dirname, '..', 'build/index.html'));
+app.all('/api/*', (req, res) => {
+  const backendURL = 'https://media-hosting-beedbd9a2f9f.herokuapp.com';
+  proxy.web(req, res, { target: backendURL });
+});
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
 app.listen(port, ()=>{
   console.log("Server is running on port: ", port)
