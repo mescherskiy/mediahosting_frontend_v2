@@ -5,7 +5,7 @@ import { logOut } from "../slices/authSlice";
 const baseQuery = fetchBaseQuery({
     // baseUrl: "http://localhost:8080/api",
     // baseUrl: "https://media-hosting-beedbd9a2f9f.herokuapp.com/api",
-    baseUrl: "/api",
+    baseUrl: "/api/",
     credentials: "include",
 })
 
@@ -16,7 +16,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     const error = response.error
     if (error) {
         if (error.status === 403) {
-            const refreshResponse = await baseQuery("/auth/refreshtoken", api, extraOptions);
+            const refreshResponse = await baseQuery("auth/refreshtoken", api, extraOptions);
             if (refreshResponse?.data) {
                 response = await baseQuery(args, api, extraOptions);
             } else {
@@ -40,21 +40,21 @@ const api = createApi({
     endpoints: builder => ({
         registration: builder.mutation({
             query: credentials => ({
-                url: "/auth/signup",
+                url: "auth/signup",
                 method: "POST",
                 body: { ...credentials }
             })
         }),
         login: builder.mutation({
             query: credentials => ({
-                url: "/auth/signin",
+                url: "auth/signin",
                 method: "POST",
                 body: { ...credentials }
             }),
         }),
         logout: builder.mutation({
             query: () => ({
-                url: "/auth/signout",
+                url: "auth/signout",
                 method: "POST",
             }),
             onQueryStarted: (_, { dispatch }) => {
@@ -63,15 +63,15 @@ const api = createApi({
         }),
         getPublicContent: builder.query({
             query: () => ({
-                url: "/test/all",
+                url: "test/all",
                 method: "GET"
             })
         }),
         getUserBoard: builder.query({
-            query: () => ("/test/user")
+            query: () => ("test/user")
         }),
         getAdminBoard: builder.query({
-            query: () => ("/test/admin")
+            query: () => ("test/admin")
         }),
         uploadPhoto: builder.mutation({
             query: ({ email, file }) => ({
@@ -81,7 +81,7 @@ const api = createApi({
             }),
         }),
         getUserPhotos: builder.query({
-            query: username => `/vault/${username}`
+            query: username => `vault/${username}`
         }),
     })
 })

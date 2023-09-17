@@ -1,6 +1,5 @@
 {
   "homepage": "http://mescherskiy.github.io",
-  "proxy": "http://localhost:3000",
   "name": "mediahosting_frontend",
   "version": "0.1.0",
   "private": true,
@@ -36,6 +35,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/api": {
+      "target": "https://media-hosting-beedbd9a2f9f.herokuapp.com",
+      "secure": true
+    }
   },
   "eslintConfig": {
     "extends": [
