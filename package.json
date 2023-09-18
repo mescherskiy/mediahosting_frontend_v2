@@ -36,10 +36,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": {
-    "target": "https://media-hosting-beedbd9a2f9f.herokuapp.com/api",
-    "secure": true
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
