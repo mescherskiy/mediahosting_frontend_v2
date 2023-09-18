@@ -2,23 +2,23 @@ const express = require('express');
 const path = require('path');
 const app = express();
 // const httpProxy = require('http-proxy');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+// const { createProxyMiddleware } = require('http-proxy-middleware');
 const port = process.env.PORT || 3000;
 
 // const proxy = httpProxy.createProxyServer();
 
-const backendProxy = createProxyMiddleware('/api', {
-  target: 'https://media-hosting-beedbd9a2f9f.herokuapp.com/api',
-  changeOrigin: true,
-})
+// const backendProxy = createProxyMiddleware('/api', {
+//   target: 'https://media-hosting-beedbd9a2f9f.herokuapp.com/api',
+//   changeOrigin: true,
+// })
 
-const frontendProxy = createProxyMiddleware('/', {
-  target: 'https://media-hosting-frontend-f78dea537f96.herokuapp.com',
-  changeOrigin: true,
-})
+// const frontendProxy = createProxyMiddleware('/', {
+//   target: 'https://media-hosting-frontend-f78dea537f96.herokuapp.com',
+//   changeOrigin: true,
+// })
 
-app.use("/api", backendProxy);
-app.use("/", frontendProxy);
+// app.use("/api", backendProxy);
+// app.use("/", frontendProxy);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'build')));
 app.get('/', (req,res) => {
